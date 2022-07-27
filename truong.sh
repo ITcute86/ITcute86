@@ -7,7 +7,7 @@ random() {
 array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
 gen64() {
 	ip64() {
-		echo "${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]${array[$RANDOM % 16]}"
+		echo "${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}${array[$RANDOM % 16]}"
 	}
 	echo "$1:$(ip64):$(ip64):$(ip64):$(ip64)"
 }
@@ -46,7 +46,7 @@ daemon
 maxconn 2000
 nserver 1.1.1.1
 nserver 8.8.4.4
-nserver 2001:4860:4860::8888F
+nserver 2001:4860:4860::8888
 nserver 2001:4860:4860::8844
 nscache 65536
 timeouts 1 5 30 60 180 1800 15 60
@@ -71,7 +71,7 @@ EOF
 
 upload_proxy() {
     cd $WORKDIR
-    local PASS='Truong123'
+    local PASS="Truong123"
     zip --password $PASS proxy.zip proxy.txt
     URL=$(curl -s --upload-file proxy.zip https://transfer.sh/proxy.zip)
 
